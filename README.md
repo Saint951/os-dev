@@ -12,8 +12,8 @@ Rust est également très bien supporté sur Arch Linux.
 
 ### 💡 Philosophie du Projet
 
-**100**% humain: Aucune IA n'est ou sera employée dans ce projet. L'objectif étant de montrer des capacités de développement et de réflexion personnelle.
-Low-level de **A-à-Z**: L'objectif étant de comprendre et concevoir nos propres solutions, aucune bibliothèque externe ne sera utilisée dans ce projet.
+* **100**% humain: Aucune IA n'est ou sera employée dans ce projet. L'objectif étant de montrer des capacités de développement et de réflexion personnelle.
+* Low-level de **A-à-Z**: L'objectif étant de comprendre et concevoir nos propres solutions, aucune bibliothèque externe ne sera utilisée dans ce projet.
 
 ### ✔️ Objectifs
 
