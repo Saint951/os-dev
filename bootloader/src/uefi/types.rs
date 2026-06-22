@@ -7,7 +7,7 @@ impl EfiStatus {
     pub const LOAD_ERROR: Self = Self(Self::error_bit(1));
     pub const INVALID_PARAMETER: Self = Self(Self::error_bit(2));
     pub const UNSUPPORTED: Self = Self(Self::error_bit(3));
-    pub const BED_BUFFER_SIZE: Self = Self(Self::error_bit(4));
+    pub const BAD_BUFFER_SIZE: Self = Self(Self::error_bit(4));
     pub const BUFFER_TOO_SMALL: Self = Self(Self::error_bit(5));
 
     const fn error_bit(code: usize) -> usize {
@@ -20,16 +20,18 @@ impl EfiStatus {
     }
 }
 
-extern "C" {
-    type OpaqueHandle;
-}
+pub enum OpaqueHandle {}
+
+#[repr(transparent)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub struct EfiHandle(*mut OpaqueHandle);
 
 #[repr(transparent)]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct EfiHandle(*mut OpaqueHandle);
 
 #[repr(C)]
-#[derive(Debug, CLone, Copy, PartialEq, Eq)]
+#[derive(Debug, Cloneone, Copy, PartialEq, Eq)]
 pub struct EfiGuid {
     pub data1: u32,
     pub data2: u16,
@@ -51,12 +53,16 @@ impl EfiBoolean {
     pub const FALSE: Self = Self(0);
     pub const TRUE: Self = Self(1);
 
-    pub fn as_bool(&self) -> {
+// C'est sûr que ça va plus vite de pas mettre son type de retour... pas sûr que ça marche tho.
+    pub fn as_bool(&self) -> bool {
         self.0 != 0
     }
 }
 
-impl From<EfiBoolean> Mechanical for bool {
+// Mechanical = vieux copier coller.. je voulais écouter mechanical corpse et j'ai du shift ctrl v
+// comme un idiot dans le mauvais écran..
+
+impl From<EfiBoolean> for bool {
     fn from(b: EfiBoolean) -> Self {
         b.as_bool()
     }
