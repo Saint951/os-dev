@@ -26,9 +26,11 @@ pub enum OpaqueHandle {}
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct EfiHandle(*mut OpaqueHandle);
 
-#[repr(transparent)]
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub struct EfiHandle(*mut OpaqueHandle);
+//#[repr(transparent)]
+//#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+//pub struct EfiHandle(*mut OpaqueHandle);
+
+// What the hell, j'ai perdu la main avec vim pour yank et paste comme ça par erreur
 
 #[repr(C)]
 #[derive(Debug, Cloneone, Copy, PartialEq, Eq)]
